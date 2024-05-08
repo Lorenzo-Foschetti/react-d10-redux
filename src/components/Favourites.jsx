@@ -5,9 +5,7 @@ import { removeFromFavourites } from "../redux/actions";
 
 const Favourites = () => {
   const dispatch = useDispatch();
-  const favouriteCompany = useSelector(
-    (state) => state.favouriteCompany.content
-  );
+  const favouriteCompany = useSelector((state) => state.favourite.content);
   return (
     <ListGroup>
       {favouriteCompany.length > 0 ? (
@@ -19,20 +17,16 @@ const Favourites = () => {
               <Button
                 variant="danger mx-3"
                 onClick={() => {
-                  dispatch(
-                    removeFromFavourites(company)
-                  );
+                  dispatch(removeFromFavourites(company));
                 }}
               >
-                <i className="bi bi-trash3"></i>
+                REMOVE<i className="bi bi-trash3"></i>
               </Button>
             </ListGroup.Item>
           );
         })
       ) : (
-        <ListGroup.Item>
-          Nessuna azienda aggiunta ai preferiti
-        </ListGroup.Item>
+        <ListGroup.Item>Nessuna azienda aggiunta ai preferiti</ListGroup.Item>
       )}
     </ListGroup>
   );
